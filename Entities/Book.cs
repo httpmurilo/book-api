@@ -1,10 +1,13 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Books.Api.Entities
+namespace Books.API.Entities
 {
-    [Table("Authors")]
+    [Table("Books")]
     public class Book
     {
         [Key]
@@ -12,11 +15,12 @@ namespace Books.Api.Entities
 
         [Required]
         [MaxLength(150)]
-        public string FirstName { get; set; }
+        public string Title { get; set; }
 
-        [Required]
-        [MaxLength(150)]
-        public string LastName { get; set; }
- 
+        [MaxLength(2500)]
+        public string Description { get; set; }
+
+        public Guid AuthorId { get; set; }
+        public Author Author { get; set; }
     }
 }
